@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 
 ## Put Open AI API key into Python environment
 import os
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = 'sk-xxxx'
 
 
 # In[ ]:
