@@ -262,6 +262,7 @@ df["Buy_Score"] = df["Buy_Score"].round(2)
 df["Recommended_Buy_Price"] = df["Recommended_Buy_Price"].round(2)
 df["Current Price"] = df["Current Price"].round(2)
 df["Delta"] = df["Delta"].round(2)
+df["50-day MA"] = df["50-day MA"].round(2)
 
 # Rank stocks based on score
 df["Rank"] = df["Buy_Score"].rank(ascending=False).astype(int)
@@ -276,7 +277,7 @@ ranked_df = ranked_df.rename(columns={"Strike Price": "Sell Put Strike Price"})
 ranked_df["Sell Put Strike Price"] = ranked_df["Sell Put Strike Price"].apply(lambda x: color_text(x, 'green'))
 
 # Display results
-print(tabulate(ranked_df[["Ticker", "Buy_Score", "Rank", "Current Price", "Recommended_Buy_Price", "Delta", "Sell Put Strike Price", "Expiration Date"]], headers="keys", tablefmt="grid"))
+print(tabulate(ranked_df[["Ticker", "Buy_Score", "Rank", "Current Price", "50-day MA", "Recommended_Buy_Price", "Delta", "Sell Put Strike Price", "Expiration Date"]], headers="keys", tablefmt="grid"))
 #print(df)
 
 # Add date-time stamp to the CSV file name
@@ -284,7 +285,7 @@ timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 csv_filename = f'./stock_analysis_results_{timestamp}.csv'
 
 # Output results to CSV
-ranked_df[["Ticker", "Buy_Score", "Rank", "Current Price", "Recommended_Buy_Price", "Delta", "Sell Put Strike Price", "Expiration Date"]].to_csv(csv_filename, index=False)
+ranked_df[["Ticker", "Buy_Score", "Rank", "Current Price", "50-day MA", "Recommended_Buy_Price", "Delta", "Sell Put Strike Price", "Expiration Date"]].to_csv(csv_filename, index=False)
 
 exit()
 
